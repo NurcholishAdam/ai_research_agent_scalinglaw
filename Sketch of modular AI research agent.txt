@@ -1,0 +1,32 @@
+User ↔ Agent Interface (Web UI or CLI)
+         ↓
+      LangGraph Agent
+  ┌────────────┐      ┌───────────┐
+  │ Memory     │◄────►│ Vector DB │◄──┐
+  │ (LangMem)  │      └───────────┘  │
+  └────┬───────┘                     │
+       │     ┌────────────────┐     │
+       └────►│ Inference LLM  │◄────┘
+             │  (Groq or Mistral)    
+             └────────────────┘
+
+ai_research_agent/
+│
+├── main.py                   # Entry point
+├── config.py                 # API keys and model config
+├── llm/
+│   ├── mistral_wrapper.py    # Wrapper for Mistral models
+│   └── groq_wrapper.py       # Wrapper for Groq models
+│
+├── memory/
+│   ├── langmem_tools.py      # LangMem memory tools
+│   └── vector_store.py       # Chroma or Pinecone vector DB setup
+│
+├── tools/
+│   └── doc_ingestor.py       # Optional: ingest PDFs or text
+│
+├── agent/
+│   └── research_agent.py     # LangGraph agent setup
+│
+└── requirements.txt
+
